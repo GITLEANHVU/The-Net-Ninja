@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video 12: Clipping Content (&What next)</title>
+  <style>
+    body {
+      background: #eee;
+    }
+
+    .wrapper {
+      background-color: #fff;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+
+      /* khi ta cho  position: relative; thì toàn bộ con trong .wrapper sẽ mang z-index: 0; nên sẽ không đè lên menu*/
+      position: relative;
+      /* tuy là dùng z-index: 0; nhưng phần tử con không đề lên menu, vậy muốn đè lên thì ta dùng position: relative; là được*/
+      z-index: 0;
+    }
+
+    .wrapper::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    /* hôm nay học thêm 2 cái này nè :)  */
+    .services {
+      max-height: 150px;
+      overflow: hidden;
+      /* visibility: hidden; */
+    }
+
+    .services::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .service h2,
+    .service p {
+      color: #999;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .service {
+      float: left;
+      background-color: #eee;
+      width: 29.33%;
+      height: 140px;
+      margin: 1%;
+      padding: 1%;
+
+      /* tạo phần tử là position: relative; */
+      position: relative;
+    }
+
+    .service:nth-child(1) {
+      top: 5px;
+    }
+
+    .service:nth-child(2) {
+      top: 15px;
+    }
+
+    .service:nth-child(3) {
+      top: 25px;
+    }
+
+    .content {
+      padding: 10px;
+      clear: left;
+      margin: 20px 1%;
+    }
+
+    .content p {
+      -webkit-column-count: 3;
+      column-count: 3;
+      -webkit-column-gap: 50px;
+      column-gap: 50px;
+      -webkit-column-rule: 1px solid #ccc;
+      column-rule: 1px solid #ccc;
+      text-align: justify;
+    }
+
+    section,
+    aside {
+      float: left;
+      width: 46%;
+      margin: 1%;
+      padding: 1%;
+      background-color: #f2f2f2;
+    }
+
+    .columns::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    /* tại đây:  phần banner sẽ ẩn đi phầ dưới chỉ chừa lài từ top đếm đến 300px. */
+    #banner {
+      max-height: 300px;
+      overflow: hidden;
+      margin: 1%;
+      position: relative;
+
+      /* z-index: 2; thì tại đây ảnh hoặc phần #banner sẽ đè lên menu(nav), nhưng bên trên đã có position: relative; va z-index: 0; nên sẽ nghe theo phần trên nó hơi giống important! nhỉ*/
+      z-index: 2;
+    }
+
+    #banner h2 {
+      position: absolute;
+      top: 30px;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      color: white;
+    }
+
+    /* Fixed Position menu */
+
+    nav {
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      /* z-index nó giống như phần x y z của trục tọa độ vậy */
+      z-index: 1;
+    }
+
+    nav ul:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    nav li {
+      list-style-type: none;
+      margin: 0 10px;
+      color: white;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- tạo menu với Fixed Posiotions, được copy ở bên dưới :) -->
+  <!-- tại đây ta thấy khi ta cuộc trang thì một số thành phần lại nằm bên trên của menu(nav) -->
+  <nav>
+    <ul>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+    </ul>
+  </nav>
+
+
+  <div class="wrapper">
+    <div id="banner">
+      <img src="../image/cloud.jpg" alt="home" width="100%" height="570" />
+      <h2>Home and red sky thinking !</h2>
+    </div>
+
+    <div class="services">
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 1</p>
+      </div>
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 2</p>
+      </div>
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 3</p>
+      </div>
+    </div>
+    <!-- <div style="clear: both;"></div> -->
+    <div class="content">
+      <h2>Content</h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum</p>
+    </div>
+
+    <div class="columns">
+      <section>
+        <h2>This is column 1</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make
+          a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make
+          a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum</p>
+      </section>
+      <aside>
+        <h2>This is column 2</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make
+          a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum</p>
+        <img src="../image/cloud.jpg" alt="home" width="100%" height="283px" />
+      </aside>
+    </div>
+
+    <!-- menu ban đầu tại đây và copy lên trên -->
+    <!-- tạo menu với Fixed Posiotions -->
+    <!-- <nav>
+          <ul>
+            <li>link</li>
+            <li>link</li>
+            <li>link</li>
+            <li>link</li>
+          </ul>
+        </nav> -->
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video 6: Creating Content Columns Using Floats</title>
+  <style>
+    body {
+      background: #eee;
+    }
+
+    .wrapper {
+      background-color: #fff;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .wrapper::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .services::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .service h2,
+    .service p {
+      color: #999;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .service {
+      float: left;
+      background-color: #eee;
+      width: 29.33%;
+      height: 140px;
+      margin: 1%;
+      padding: 1%;
+    }
+
+    .content {
+      padding: 10px;
+      clear: left;
+      margin: 20px 1%;
+    }
+
+    /* bởi vì .content được float: left; và chiếm toàn bộ kích thước width nên 
+      ta float: left tại này luôn để khi dùng background-color: sẽ không bị ảnh hưởng tới các box phía trên
+      đùa thôi nó không ảnh hưởng đâu vì ta đã dùng .wrapper::after bên trên và phần section với aside thì nằm trong
+       một block khác rồi :) nêu đã được cách ly xã hội với wrapper hay float: left của content hay service. */
+    /* vậy ta dùng float: left; để 2 block có thể nằm trên cùng một hàng*/
+    section,
+    aside {
+      float: left;
+      width: 46%;
+      margin: 1%;
+      padding: 1%;
+      background-color: #f2f2f2;
+    }
+
+    /* và ta lại clear: both; cho columns để định dạng các phần tiếp không bị ảnh hưởng nhau(cách ly xã hội.) */
+    .columns::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="services">
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 1</p>
+      </div>
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 2</p>
+      </div>
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 3</p>
+      </div>
+    </div>
+    <!-- <div style="clear: both;"></div> -->
+    <div class="content">
+      <h2>Content</h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum</p>
+    </div>
+
+    <div class="columns">
+      <section>
+        <h2>This is column 1</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make
+          a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make
+          a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum</p>
+      </section>
+      <aside>
+        <h2>This is column 2</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make
+          a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+          versions
+          of Lorem Ipsum</p>
+        <img src="../image/cloud.jpg" alt="home" width="100%" height="283px" />
+      </aside>
+    </div>
+
+  </div>
+</body>
+
+</html>

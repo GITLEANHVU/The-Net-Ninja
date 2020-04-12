@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video 5: Clearing Floats</title>
+  <style>
+    body {
+      background: #eee;
+    }
+
+    .wrapper {
+      background-color: #fff;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .wrapper::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .services::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .service h2,
+    .service p {
+      color: #999;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .service {
+      /* khi dùng float: left thì cả 3 box service đề thu gọn lại nằm trên 1 hàng và dùng margin padding hay height width: để xem box được chia ra sao  */
+      float: left;
+      background-color: #eee;
+      width: 29.33%;
+      height: 140px;
+      margin: 1%;
+      padding: 1%;
+    }
+
+    .services::after {
+      content: "test :)";
+      display: block;
+      clear: both;
+    }
+
+    .content {
+      padding: 10px;
+      background-color: #ccc;
+      /* khi chưa dùng clear: both; thì content chiếm lên cả hết background của wrapper
+      bị ảnh hưởng là bới vì ta dùng float: left; cho .service mà .services thì không có chiều cao nên
+      .content sẽ bị đè phía sau tất cả các .service nên background-color: bị chiếm lên luôn cả hết background.
+       */
+      /* tại này không thể dùng clear right để cắt khối của .content vì phần .service đều là clear: left;*/
+      /* clear: left; */
+      /* sau khi dùng thì nó không còn chiếm nữa.  */
+      /* tại đây ta không thể dùng margin-top: được nó sẽ bị đẩy margin lên top chứ không từ top đẩy xuống
+      đó là do ta dùng clear cho phần .content vì vậy ta nên clear: both cho phần element khác thì margin sẽ hoạt động trở lại
+      ta sẽ thêm một thẻ div trước div.content (hoặc ta sẽ thêm  một after: content:"") */
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="services">
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 1</p>
+      </div>
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 2</p>
+      </div>
+
+      <div class="service">
+        <h2>Service 1</h2>
+        <p>This is service 3</p>
+      </div>
+    </div>
+    <!-- sau khi thêm clear both tại đây thì .content đã có thể dừng thuộc tính margin 
+    
+    nhưng mà cứ mỗi lần thêm div và style như vậy thì thật sự rất là xấu và ta không nên làm như vầy.
+  nên dùng style after: {content: ""; dispaly: block; clear: both;}-->
+    <!-- <div style="clear: both;"></div> -->
+
+
+    <div class="content">
+      <h2>Content</h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
