@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video 3: Rows</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      color: #fff;
+      font-family: 'Nunito Semibold';
+      text-align: center;
+    }
+
+    #content {
+      /* tao display: grid; chia 3 điều các elements block cho 3 cột là 1fr. */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* grid-auto-columns: 3fr 2fr 1fr; không được :) */
+      /* dùng cách này thì mặt định mỗi rows sẽ nhập giá trị chiều cao là 200px nếu có 
+      nội dung bên trong chúng cũng mặt kệ và hidden luôn */
+      /* grid-auto-rows: 200px; */
+      /* cách chửa */
+      /* minmax(nhỏ nhất,lớn nhất) */
+      /* vì là auto nên dù nội dung có lớn đến đâu cũng sẽ dãn ra được */
+      /* grid-auto-rows: minmax(200px, auto); */
+
+      /* tại đây repeat 4 nên nó sẽ tự động tạo một khoảng trống tại cuối 
+      nhưng phần content thì lại bị hidden nên ta thử dùng minmax(200px, auto);*/
+      grid-template-rows: repeat(4, minmax(200px, auto));
+
+      /* tiếp đến ta thử tạo khoảng cách cho các elements xem sao(margin hoặc grid-gap)*/
+      grid-row-gap: 10px;
+      grid-column-gap: 10px;
+      /* grid-gap: 10px; */
+      max-width: 960px;
+      margin: 0 auto;
+
+    }
+
+    #content div {
+      background-color: #3BBCED;
+      padding: 30px;
+      /* margin: 20px; */
+    }
+
+    #content div:nth-child(even) {
+      background-color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="" id="content">
+    <div>1</div>
+    <div>2</div>
+    <div>3
+      <p>Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả, được dùng vào việc trình bày và dàn trang phục vụ cho in ấn.
+        Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ
+        vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn bản này không những đã tồn
+        tại năm thế kỉ, mà khi được áp dụng vào tin học văn phòng, nội dung của nó vẫn không hề bị thay đổi. Nó đã được
+        phổ biến trong những năm 1960 nhờ việc bán những bản giấy Letraset in những đoạn Lorem Ipsum, và gần đây hơn,
+        được sử dụng trong các ứng dụng dàn trang, như Aldus PageMaker.</p>
+    </div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+  </div>
+</body>
+
+</html>

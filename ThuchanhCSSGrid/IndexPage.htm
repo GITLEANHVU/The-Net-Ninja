@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta name="author" content="Lê Anh Vũ">
+  <meta name="keywords" content="học html, học css, học javascript, học boostrap 4, học PHP, học lập trình căn bản">
+  <meta name="description" content="Tự học lập trình tại nhà mùa covid-: năm 2020">
+  <meta>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- không biết cách add icon online nên chắc nó không hiện đâu -->
+  <link rel="icon" href="img/red-cloud.jpg" />
+  <!-- <style>
+header,
+main,
+footer,
+article,
+figure,
+section,
+aside {
+display: block;
+}
+
+*::before,
+*::after,
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
+color: white;
+font-family: cursive;
+}
+
+header {
+width: 100%;
+background-color: rgb(42, 42, 90);
+color: orangered;
+text-align: center;
+}
+
+header h1 {
+padding: 30px;
+}
+
+ul {
+margin: 0;
+padding: 0;
+}
+
+ul li {
+background: rgb(78, 78, 165);
+text-align: center;
+color: white;
+list-style-type: none;
+}
+
+ul li:nth-child(even) {
+background: rgb(69, 134, 118);
+text-align: center;
+color: white;
+}
+
+ul#menu-top a {
+text-decoration: none;
+color: white;
+font-size: 21px;
+}
+
+ul {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+/* grid-template-rows: repeat(2, 1fr); */
+/* grid-row: minmax(200px, auto); */
+}
+
+ul li {
+/* height: 50px; */
+padding: 12px;
+}
+
+main {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: repeat(12, minmax(60px, auto));
+}
+
+.aside {
+/* height: 300px; */
+background: orange;
+margin-bottom: 1px;
+grid-column: 1/5;
+grid-row: 1/9;
+border-radius: 10px;
+margin: 20px;
+text-align: center;
+}
+
+.section1 {
+grid-column: 5/13;
+grid-row: 1/9;
+text-align: center;
+background-color: rgb(97, 175, 133);
+border-radius: 10px;
+margin: 20px;
+}
+
+.section2 {
+grid-column: 5/13;
+grid-row: 9/13;
+text-align: center;
+border-radius: 10px;
+margin: 20px;
+background-color: rgb(219, 127, 199);
+}
+
+.section2 {
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(3, 1fr);
+display: grid;
+}
+
+.section2 h2 {
+grid-column: 2 /3;
+}
+
+.section2 .box1 {
+grid-column: 1/ 2;
+grid-row: 2/ 4;
+}
+
+.section2 .box2 {
+grid-column: 2/ 3;
+grid-row: 2/ 4;
+}
+
+.section2 .box3 {
+grid-column: 3/ 4;
+grid-row: 2/ 4;
+}
+
+.box {
+margin-top: 3px;
+background-color: rgb(188, 188, 218);
+padding: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+/* margin-left: 1px;
+margin-right: 1px; */
+color: rgb(182, 50, 50);
+font-size: 18px;
+}
+
+.box:nth-child(even) {
+margin-top: 3px;
+background-color: rgb(102, 216, 182);
+}
+
+footer {
+margin-top: 5px;
+background-color: rgb(66, 65, 65);
+color: white;
+}
+
+footer p {
+text-align: center;
+padding: 20px;
+font-size: 21px;
+}
+</style> -->
+  <style>
+    header,
+    main,
+    footer,
+    article,
+    figure,
+    section,
+    aside,
+    div,
+    nav {
+      display: block;
+    }
+
+    *::before,
+    *::after,
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      /* color: white; */
+      font-family: cursive;
+      min-width: 360px;
+    }
+
+    header h1 {
+      display: none;
+    }
+
+    nav#menu-top ul {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      text-align: center;
+    }
+
+    nav#menu-top ul li {
+      background-color: orange;
+    }
+
+    nav#menu-top ul li:nth-child(even) {
+      position: relative;
+      top: 23px;
+      background-color: rgba(0, 0, 0, 0.856);
+    }
+
+    nav#menu-top a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: black;
+    }
+
+    nav#menu-top a {
+      color: white;
+    }
+
+    nav#menu-top a:nth-child(even) {
+      color: white;
+    }
+
+    main {
+      margin: 0;
+      padding: 5px;
+      /* background-color: purple; */
+    }
+
+    main div.aside {
+      margin-top: 10px;
+      background-color: rgba(192, 102, 17, 0.082);
+      padding: 0 15px 15px 15px;
+      border-radius: 5px;
+    }
+
+    main div.aside h2 {
+      text-align: center;
+      padding: 10px;
+      color: rgb(94, 16, 238);
+    }
+
+    main div.aside p {
+      text-align: justify;
+      color: black;
+    }
+
+    /* section */
+    main div.section {
+      margin-top: 10px;
+      background-color: rgba(22, 81, 83, 0.082);
+      padding: 0 15px 15px 15px;
+      border-radius: 5px;
+    }
+
+    main div.section h2 {
+      text-align: center;
+      padding: 15px 0px;
+      color: rgb(94, 16, 238);
+    }
+
+    main div.section p {
+      text-align: justify;
+      color: black;
+    }
+
+    main div.section2 div.list-box {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, minmax(300px, auto));
+      grid-row-gap: 10px;
+      text-align: center;
+
+    }
+
+    div.section2 div.list-box div.box {
+      border-top: 1px solid rgb(143, 1, 1);
+      border-radius: 10px;
+      border-right: 1px solid rgba(0, 0, 255, 0.281);
+      border-left: 1px solid rgba(0, 0, 255, 0.281);
+      border-bottom: 1px solid rgba(255, 0, 0, 0.103);
+      padding: 15px;
+    }
+
+    footer {
+      margin-top: 5px;
+      background-color: rgb(66, 65, 65);
+      color: white;
+    }
+
+    footer p {
+      text-align: center;
+      padding: 20px;
+      font-size: 21px;
+    }
+
+
+    /* // responsive  */
+
+    @media screen and (min-width: 460px) {
+      header h1 {
+        display: block;
+        text-align: center;
+        padding: 20px;
+        background-color: rgb(42, 42, 90);
+        color: orangered;
+        margin-bottom: 10px;
+      }
+
+      nav {
+        background-color: rgb(187, 59, 59);
+        padding: 20px;
+      }
+
+      nav#menu-top ul {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-column-gap: 1%;
+      }
+
+      nav#menu-top ul li {
+        padding: 10px;
+      }
+
+      nav#menu-top ul li:nth-child(even) {
+        top: 0;
+      }
+    }
+
+    @media screen and (min-width: 800px) {
+      nav#menu-top ul li {
+        padding: 15px;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      header h1 {
+        padding: 30px;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      nav#menu-top li {
+        background: rgb(78, 78, 165);
+        text-align: center;
+        color: white;
+        list-style-type: none;
+      }
+
+      nav#menu-top li:nth-child(even) {
+        background: rgb(69, 134, 118);
+        text-align: center;
+        color: white;
+      }
+
+      nav#menu-top a {
+        text-decoration: none;
+        color: white;
+        font-size: 30px;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 50px;
+      }
+
+      main div.section1 {
+        grid-column: 2/5;
+        grid-row: 1/2;
+      }
+
+      main div.section2 {
+        grid-column: 2/5;
+        grid-row: 2/6;
+      }
+
+      .box:nth-child(even) {
+        margin-top: 3px;
+        background-color: rgb(102, 216, 182);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>WelCome To My Website !</h1>
+  </header>
+  <nav id="menu-top">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#logout">Logout</a></li>
+      <li><a href="#login">Login</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="aside">
+      <h2>Aside: nội dung phần Aside</h2>
+      <p><strong style="color: rgb(86, 74, 156)">ĐOẠN VĂN BẢN </strong> Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Nemo laboriosam
+        molestias sunt facilis provident </p>
+      <p>
+        <br />
+        dolore sint vitae numquam repellendus laborum voluptatem corporis aut quisquam facere, quos tempora ipsam vel
+        rerum.</p>
+    </div>
+    <div class="section1 section">
+      <h2>Section 1: Tiêu đề phần nội dung 1</h2>
+      <p><strong style="color: rgb(86, 74, 156)">ĐOẠN VĂN BẢN </strong> <strong style="color: rgb(118, 240, 118)">thường
+          thì không có chữ nhều thế này đâu
+        </strong> Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Nemo laboriosam
+        molestias sunt facilis provident
+        dolore sint vitae numquam repellendus laborum voluptatem corporis aut quisquam facere, quos tempora ipsam vel
+        rerum.</p>
+      <!-- <p>Lorem ipsum dolor sit amet, consectetur
+          adipisicing elit. Nemo laboriosam
+          molestias sunt facilis provident
+          dolore sint vitae numquam repellendus laborum voluptatem corporis aut quisquam facere, quos tempora ipsam vel
+          rerum.Lorem ipsum dolor sit amet, consectetur
+          adipisicing elit. Nemo laboriosam
+          molestias sunt facilis provident
+          dolore sint vitae numquam repellendus laborum voluptatem corporis aut quisquam facere, quos tempora ipsam vel
+          rerum.Lorem ipsum dolor sit amet, consectetur
+          adipisicing elit. Nemo laboriosam
+          molestias sunt facilis provident
+          dolore sint vitae numquam repellendus laborum voluptatem corporis aut quisquam facere, quos tempora ipsam vel
+          rerum.</p> 
+      -->
+    </div>
+    <div class="section2 section">
+      <h2>Section 2: Tiêu đề phần nội dung 2</h2>
+      <div class="list-box">
+        <div class="box1 box">box 1<p>Thêm một số nội dung vào bên trong box và thường thì nội dung không nên quá nhiều
+            đây là trong mới học kỹ thuật css mới mà :)
+          </p>
+        </div>
+        <div class="box2 box">box 2<p>Thêm một số nội dung vào bên trong box và thường thì nội dung không nên quá nhiều
+            đây là trong mới học kỹ thuật css mới mà :)
+          </p>
+        </div>
+        <div class="box3 box">box 3<p>Thêm một số nội dung vào bên trong box và thường thì nội dung không nên quá nhiều
+            đây là trong mới học kỹ thuật css mới mà :)
+          </p>
+        </div>
+        <div class="box4 box">box 4<p>Thêm một số nội dung vào bên trong box và thường thì nội dung không nên quá nhiều
+            đây là trong mới học kỹ thuật css mới mà :)
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>footer</p>
+    <p>Đây là phần chân trang web :)</p>
+    <p><strong>&copy; LEANHVU</strong></p>
+    <p>:)</p>
+  </footer>
+</body>
+
+</html>
